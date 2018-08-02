@@ -1,0 +1,191 @@
+
+html {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+body {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: hsla(239, 10%, 20%, 1.0);
+    font: 20px Helvetica, Arial, sans-serif;
+    color: #eee;
+    margin: 0px;
+}
+
+.lm-instructions {
+}
+
+.lm-drag-receive {
+    background-color: hsla(239, 10%, 5%, 1.0);
+}
+
+.lm-file-arrow-img {
+    outline: 0px;
+    display: inline-block;
+    position: absolute;
+    bottom: -90px;
+    right: -75px;
+    width: 130px;
+    height: 155px;
+}
+
+.lm-hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.lm-file-block-size {
+    width: 407px;
+    height: 82px;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+}
+
+.lm-ghost-file-block {
+    outline: 2px solid hsl(239, 10%, 70%);
+    background: hsl(239, 10%, 5%);
+    display: inline-block;
+    top:0px;
+    left:0px;
+}
+
+.lm-file-block {
+    background-color: hsl(239, 10%, 30%);
+    border: 0px solid hsl(239, 10%, 70%);
+}
+
+#draginto.lm-drag-over > div.lm-link-list:after {
+    content: "";
+    display: inline-block;
+    outline: 3px solid hsl(239, 10%, 70%);
+    width: 407px;
+    height: 82px;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+}
+
+.lm-file-title {
+    padding: 5px;
+    position: absolute;
+    height: 20px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    text-overflow: ellipsis;
+}
+
+@-webkit-keyframes move-background {
+    0%{background-position:200% 0%}
+    100%{background-position:100% 0%}
+}
+@-moz-keyframes move-background {
+    0%{background-position:200% 0%}
+    100%{background-position:100% 0%}
+}
+@keyframes move-background {
+    0%{background-position:200% 0%}
+    100%{background-position:100% 0%}
+}
+
+.lm-barber-pole {
+    background: repeating-linear-gradient(
+        45deg, transparent,
+        transparent 10px,
+        hsla(239, 50%, 80%, 0.5) 10px,
+        hsla(239, 50%, 80%, 0.5) 20px);
+    background-size: 400% 400%;
+
+    animation: move-background 20s linear infinite;
+    -webkit-animation: move-background 20s linear infinite;
+    -moz-animation: move-background 20s linear infinite;
+}
+
+.lm-link-area {
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.lm-link-text {
+    border: 0px solid hsl(239, 10%, 60%);
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    width: 360px;
+    bottom: 5px;
+    padding: 3px;
+    margin-bottom: 0px;
+    font-family: monospace;
+    font-size: 15px;
+    font-style: normal;
+    overflow-wrap: break-word;
+}
+
+.lm-copy-to-clipboard-button {
+    border: 2px solid hsl(239, 10%, 80%);
+    border-radius: 10px;
+    position: absolute;
+    right: 9px;
+    height: 42px;
+    width: 44px;
+    bottom: 17px;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+#draginto {
+    outline: 0px;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: transparent;
+}
+
+#first-visual {
+    outline: 0px;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+svg.icon {
+    width: 48px;
+    height: 38px;
+    margin-top: 6px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+svg.icon path {
+    stroke: #eee;
+    fill: #eee;
+    stroke-miterlimit: 11;
+    stroke-linecap: round;
+}
+
+svg.compact-icon path {
+    stroke: #eee;
+    fill: #eee;
+}
+
