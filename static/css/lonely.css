@@ -15,8 +15,8 @@ body {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: hsla(239, 10%, 20%, 1.0);
-    font: 20px Helvetica, Arial, sans-serif;
+    background-color: hsla(239, 10%, 30%, 1.0);
+    font: 15px Helvetica, Arial, sans-serif;
     color: #eee;
     margin: 0px;
 }
@@ -44,7 +44,7 @@ body {
 }
 
 .lm-file-block-size {
-    width: 407px;
+    width: 387px;
     height: 82px;
     display: inline-block;
     position: relative;
@@ -53,7 +53,7 @@ body {
 }
 
 .lm-ghost-file-block {
-    outline: 2px solid hsl(239, 10%, 70%);
+    outline: 0px;
     background: hsl(239, 10%, 5%);
     display: inline-block;
     top:0px;
@@ -61,15 +61,14 @@ body {
 }
 
 .lm-file-block {
-    background-color: hsl(239, 10%, 30%);
-    border: 0px solid hsl(239, 10%, 70%);
+    background-color: hsl(239, 10%, 10%);
 }
 
 #draginto.lm-drag-over > div.lm-link-list:after {
     content: "";
     display: inline-block;
     outline: 3px solid hsl(239, 10%, 70%);
-    width: 407px;
+    width: 387px;
     height: 82px;
     display: inline-block;
     position: relative;
@@ -126,7 +125,7 @@ body {
     position: absolute;
     top: 0px;
     left: 5px;
-    width: 360px;
+    right: 62px;
     bottom: 5px;
     padding: 3px;
     margin-bottom: 0px;
@@ -134,6 +133,7 @@ body {
     font-size: 15px;
     font-style: normal;
     overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .lm-copy-to-clipboard-button {
@@ -146,6 +146,11 @@ body {
     bottom: 17px;
     padding: 0px;
     margin-bottom: 0px;
+}
+
+.lm-copy-to-clipboard-button:hover {
+    cursor: pointer;
+    background-color: hsl(239, 10%, 20%);
 }
 
 #draginto {
