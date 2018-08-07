@@ -11,8 +11,6 @@ from server import app
 from mime import ext_to_type
 from flask import Response
 
-import time
-
 import implementation
 import database
 import base64
@@ -34,7 +32,6 @@ def r_index():
 def upload_base64():
     filename = request.form['filename']
     content = base64.b64decode(re.findall("base64,(.*)", request.form['content'])[0])
-    time.sleep(3) # DEBUG CODE
     return impl.new_file(filename, content)
 
 

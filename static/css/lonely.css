@@ -44,7 +44,7 @@ body {
 }
 
 .lm-file-block-size {
-    width: 387px;
+    width: 397px;
     height: 82px;
     display: inline-block;
     position: relative;
@@ -68,7 +68,7 @@ body {
     content: "";
     display: inline-block;
     outline: 3px solid hsl(239, 10%, 70%);
-    width: 387px;
+    width: 397px;
     height: 82px;
     display: inline-block;
     position: relative;
