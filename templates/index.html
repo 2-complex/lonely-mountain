@@ -241,61 +241,52 @@ DragExt.init("lm-draggable", "lm-drag-receive",
 
         handleDropDataTransfer : function(dataTransfer, transientObject, target)
         {
-            for( var i = 0; i < dataTransfer.items.length; i++ )
+            var files = dataTransfer.files;
+            if( files.length > 0 )
             {
-                var item = dataTransfer.items[i];
-
-                if( item.webkitGetAsEntry != undefined )
-                {
-                    var webkitEntry = item.webkitGetAsEntry();
-                    if( webkitEntry && webkitEntry.isDirectory )
-                    {
-                        // todo: traverse directory?
-                        continue;
-                    }
-                }
-
-                var file = dataTransfer.files[i]
                 $("#first-visual").remove();
 
-                var $linkArea = $("<div>").addClass("lm-link-area");
-                $linkArea.addClass("lm-barber-pole")
+                for( var i = 0; i < files.length; i++ )
+                {
+                    var file = files[i];
 
-                var $fileBlock = $("<div>")
-                .addClass("lm-file-block")
-                .addClass("lm-file-block-size")
-                .append(
-                    $("<div>").addClass("lm-file-title").text(file.name),
-                    $linkArea
-                );
+                    var $linkArea = $("<div>").addClass("lm-link-area");
+                    $linkArea.addClass("lm-barber-pole")
 
-                $("#linklist").append(
-                    $fileBlock
-                );
+                    var $fileBlock = $("<div>")
+                        .addClass("lm-file-block")
+                        .addClass("lm-file-block-size")
+                        .append(
+                            $("<div>").addClass("lm-file-title").text(file.name),
+                            $linkArea
+                        );
 
-                $.when(sendFile(file)).then(
-                    function(filename, result)
-                    {
-                        var info = JSON.parse(result);
-                        var fullUrl = "https://sha-da.com/files/" + info.hashcode;
+                    $("#linklist").append( $fileBlock );
 
-                        $("#first-visual").remove();
+                    $.when(sendFile(file)).then(
+                        function(filename, result)
+                        {
+                            var info = JSON.parse(result);
+                            var fullUrl = "https://sha-da.com/files/" + info.hashcode;
 
-                        $linkArea.empty()
-                        $linkArea.removeClass("lm-barber-pole")
-                        $linkArea.append(
-                            $("<div>").addClass("lm-link-text").text(fullUrl),
-                            $("<div>").addClass("lm-copy-to-clipboard-button").append(
-                                dgn.getIconSvg("clipboard", "icon").click(
-                                    function()
-                                    {
-                                        copyTextToClipboard(fullUrl)
-                                    }
+                            $("#first-visual").remove();
+
+                            $linkArea.empty()
+                            $linkArea.removeClass("lm-barber-pole")
+                            $linkArea.append(
+                                $("<div>").addClass("lm-link-text").text(fullUrl),
+                                $("<div>").addClass("lm-copy-to-clipboard-button").append(
+                                    dgn.getIconSvg("clipboard", "icon").click(
+                                        function()
+                                        {
+                                            copyTextToClipboard(fullUrl)
+                                        }
+                                    )
                                 )
                             )
-                        )
-                    }
-                );
+                        }
+                    );
+                }
             }
         }
     });
