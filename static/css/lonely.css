@@ -44,8 +44,8 @@ body {
 }
 
 .lm-file-block-size {
-    width: 397px;
-    height: 82px;
+    width: 393px;
+    height: 100px;
     display: inline-block;
     position: relative;
     padding: 10px;
@@ -68,8 +68,8 @@ body {
     content: "";
     display: inline-block;
     outline: 3px solid hsl(239, 10%, 70%);
-    width: 397px;
-    height: 82px;
+    width: 393px;
+    height: 100px;
     display: inline-block;
     position: relative;
     padding: 10px;
@@ -128,8 +128,8 @@ body {
     position: absolute;
     top: 0px;
     left: 5px;
-    right: 62px;
-    bottom: 5px;
+    right: 5px;
+    bottom: 4px;
     padding: 3px;
     margin-bottom: 0px;
     font-family: monospace;
@@ -144,10 +144,10 @@ body {
     border-radius: 10px;
     position: absolute;
     right: 9px;
-    height: 42px;
-    width: 44px;
-    bottom: 17px;
-    padding: 0px;
+    height: 17px;
+    width: 36px;
+    bottom: 11px;
+    padding: 5px;
     margin-bottom: 0px;
 }
 
