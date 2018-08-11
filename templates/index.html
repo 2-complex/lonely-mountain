@@ -43,8 +43,6 @@
 </div>
 
 <div id="draginto" class="lm-drag-receive">
-    <div id="linklist" class="lm-link-list">
-    </div>
 </div>
 
 <script>
@@ -221,16 +219,19 @@ DragExt.init("lm-draggable", "lm-drag-receive",
 
         decorateForDragEnter : function(target)
         {
+            console.log("enter" + target);
             $("#draginto").addClass("lm-drag-over");
         },
 
         decorateForDragOver : function(target)
         {
+            console.log("over" + target);
             $("#draginto").addClass("lm-drag-over");
         },
 
         decorateForDragLeave : function(target)
         {
+            console.log("leave" + target);
             $("#draginto").removeClass("lm-drag-over");
         },
 
@@ -261,7 +262,7 @@ DragExt.init("lm-draggable", "lm-drag-receive",
                             $linkArea
                         );
 
-                    $("#linklist").append( $fileBlock );
+                    $("#draginto").append( $fileBlock );
 
                     $.when(sendFile(file)).then(
                         function(filename, result)

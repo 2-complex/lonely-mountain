@@ -64,7 +64,7 @@ body {
     background-color: hsl(239, 10%, 10%);
 }
 
-#draginto.lm-drag-over > div.lm-link-list:after {
+#draginto.lm-drag-over:after {
     content: "";
     display: inline-block;
     outline: 3px solid hsl(239, 10%, 70%);
