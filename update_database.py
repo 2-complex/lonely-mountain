@@ -41,9 +41,7 @@ def create_missing_database_entities(Model, engine):
     print "metadata", m
     for table_name in m.tables:
         table = m.tables[table_name]
-        print "tab;e", table
         if current_info.has_key(table_name):
-            print "stuff", table_name
             for col in table.columns:
                 print "col", col
                 if not col.name in current_info[table_name]:
