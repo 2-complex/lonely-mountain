@@ -22,5 +22,4 @@ class File(database.Model):
         self.content = content
 
     def __repr__(self):
-        return '<File %s/%s>' % (self.hashcode, self.filename, self.content)
-
+        return '<File %s/%s>' % (self.hashcode, self.filename)
