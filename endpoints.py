@@ -60,15 +60,21 @@ def upload_files():
 @app.route('/files/<path:hashcode>', methods=['GET'])
 def r_files(hashcode):
     filename, content = impl.get_file(hashcode)
-
     if filename != None:
         _, file_extension = os.path.splitext(filename)
         response = Response(content, mimetype = ext_to_type(file_extension))
         response.headers['Content-Disposition'] = 'attachment; filename=' + filename
         return response
-    else:
-        return abort(404)
+    return abort(404)
 
-    return impl.files(hashcode)
+@app.route('/view/<path:hashcode>', methods=['GET'])
+def r_view(hashcode):
+    filename, content = impl.get_file(hashcode)
+    if filename != None:
+        _, file_extension = os.path.splitext(filename)
+        response = Response(content, mimetype = ext_to_type(file_extension))
+        return response
+    return abort(404)
+
 
 
