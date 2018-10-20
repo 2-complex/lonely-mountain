@@ -1,5 +1,6 @@
 import database
 import datetime
+import time
 
 db = database.Database("sqlite:///testing.db")
 
@@ -11,6 +12,8 @@ def make_current(file):
 
 def display(file):
     print file
+    with open("cleanup.log.txt", "a") as f:
+        f.write(str(file) + "\n")
 
 def update_null_timestamps():
     files_with_no_timestamp = db.models.File.query.filter_by(timestamp=None).all()
@@ -20,7 +23,11 @@ def update_null_timestamps():
 def delete_old_files():
     old_files = db.models.File.query.filter(db.models.File.timestamp < a_long_time_ago).all()
     map( display, old_files )
+    map( db.session.delete, old_files )
     db.session.commit()
 
-update_null_timestamps()
-delete_old_files()
+while True:
+    update_null_timestamps()
+    delete_old_files()
+    time.sleep(60*60)
+
