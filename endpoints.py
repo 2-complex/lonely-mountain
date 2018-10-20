@@ -34,14 +34,11 @@ def upload_base64():
     content = base64.b64decode(re.findall("base64,(.*)", request.form['content'])[0])
     return impl.new_file(filename, content)
 
-
 @app.route('/upload-text', methods=['POST'])
-def upload_text(username, projectslug):
+def upload_text():
     data = request.form['data']
     filename = request.form['filename']
-    impl.new_file(filename, data)
-    return json.dumps({"status":"okay"})
-
+    return impl.new_file(filename, data)
 
 @app.route('/files/<path:hashcode>', methods=['GET'])
 def r_files(hashcode):
