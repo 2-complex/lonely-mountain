@@ -94,8 +94,7 @@ copyTextToClipboard = function(text)
 
     try
     {
-        var successful = document.execCommand('copy');
-        var msg = successful ? 'successful' : 'unsuccessful';
+        document.execCommand('copy');
     }
     catch (err)
     {
