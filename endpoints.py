@@ -32,29 +32,49 @@ def r_index():
 def upload_base64():
     filename = request.form['filename']
     content = base64.b64decode(re.findall("base64,(.*)", request.form['content'])[0])
-    return impl.new_file(filename, content)
-
+    return json.dumps(impl.new_file(filename, content))
 
 @app.route('/upload-text', methods=['POST'])
-def upload_text(username, projectslug):
+def upload_text():
     data = request.form['data']
     filename = request.form['filename']
-    impl.new_file(filename, data)
-    return json.dumps({"status":"okay"})
+    return json.dumps(impl.new_file(filename, data))
 
+@app.route('/upload-file', methods=['POST'])
+def upload_file():
+    for filename in request.files:
+        f = request.files[filename]
+        return json.dumps(impl.new_file(filename, f.stream.read()))
+    return "{}"
+
+@app.route('/upload-files', methods=['POST'])
+def upload_files():
+    request.get_data()
+    hashcodes = []
+    for filename in request.files:
+        f = request.files[filename]
+        h = impl.new_file(filename, f.stream.read())["hashcode"]
+        hashcodes.append(h)
+    return json.dumps({"hashcodes":hashcodes})
 
 @app.route('/files/<path:hashcode>', methods=['GET'])
 def r_files(hashcode):
     filename, content = impl.get_file(hashcode)
-
     if filename != None:
         _, file_extension = os.path.splitext(filename)
         response = Response(content, mimetype = ext_to_type(file_extension))
         response.headers['Content-Disposition'] = 'attachment; filename=' + filename
         return response
-    else:
-        return abort(404)
+    return abort(404)
 
-    return impl.files(hashcode)
+@app.route('/view/<path:hashcode>', methods=['GET'])
+def r_view(hashcode):
+    filename, content = impl.get_file(hashcode)
+    if filename != None:
+        _, file_extension = os.path.splitext(filename)
+        response = Response(content, mimetype = ext_to_type(file_extension))
+        return response
+    return abort(404)
+
 
 

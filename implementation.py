@@ -1,4 +1,3 @@
-import json
 import sqlalchemy
 import re
 import hashlib
@@ -16,7 +15,7 @@ class Implementation:
         map( self.session.delete, self.models.File.query.filter_by(hashcode=in_file.hashcode) )
         self.session.add(in_file)
         self.session.commit()
-        return json.dumps({"hashcode":in_file.hashcode})
+        return {"hashcode":in_file.hashcode}
 
     def get_file(self, hashcode):
         files = list(self.models.File.query.filter_by(hashcode=hashcode))
