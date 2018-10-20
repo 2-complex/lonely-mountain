@@ -2,6 +2,7 @@ import json
 import sqlalchemy
 import re
 import hashlib
+import datetime
 
 
 class Implementation:
@@ -11,15 +12,20 @@ class Implementation:
         self.session = session
 
     def new_file(self, filename, content):
-        my_file = self.models.File(filename, content)
-        self.session.add(my_file)
+        in_file = self.models.File(filename, content)
+        map( self.session.delete, self.models.File.query.filter_by(hashcode=in_file.hashcode) )
+        self.session.add(in_file)
         self.session.commit()
-        return json.dumps({"hashcode":my_file.hashcode})
+        return json.dumps({"hashcode":in_file.hashcode})
 
     def get_file(self, hashcode):
         files = list(self.models.File.query.filter_by(hashcode=hashcode))
         if len(files) == 0:
             return None, None
 
-        return files[0].filename, files[0].content
+        file = files[0]
+        file.timestamp = datetime.datetime.utcnow()
+        self.session.commit()
+
+        return file.filename, file.content
 

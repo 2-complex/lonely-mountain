@@ -24,10 +24,6 @@ body {
 .lm-instructions {
 }
 
-.lm-drag-receive {
-    background-color: hsla(239, 10%, 5%, 1.0);
-}
-
 .lm-file-arrow-img {
     outline: 0px;
     display: inline-block;
@@ -64,18 +60,6 @@ body {
     background-color: hsl(239, 10%, 10%);
 }
 
-#draginto.lm-drag-over:after {
-    content: "";
-    display: inline-block;
-    outline: 3px solid hsl(239, 10%, 70%);
-    width: 393px;
-    height: 100px;
-    display: inline-block;
-    position: relative;
-    padding: 10px;
-    margin: 10px;
-}
-
 .lm-file-title {
     padding: 5px;
     position: absolute;
@@ -83,7 +67,6 @@ body {
     left: 0px;
     right: 0px;
     top: 0px;
-    width: 397px;
     overflow:hidden;
     white-space:nowrap;
     text-overflow: ellipsis;
@@ -123,13 +106,49 @@ body {
     bottom: 0px;
 }
 
+.lm-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.lm-flash {
+    -webkit-animation: pulse-background 1;
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-timing-function: ease-out;
+    animation: pulse-background 1;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes pulse-background {
+    0% {
+        background-color: hsla(239, 100%, 80%, 0.6);
+    }
+    100% {
+        background-color: hsla(239, 100%, 80%, 0.0);
+    }
+}
+
+@keyframes pulse-background {
+    0% {
+        background-color: hsla(239, 100%, 80%, 0.6);
+    }
+    100% {
+        background-color: hsla(239, 100%, 80%, 0.0);
+    }
+}
+
 .lm-link-text {
     border: 0px solid hsl(239, 10%, 60%);
     position: absolute;
     top: 0px;
     left: 5px;
     right: 5px;
-    bottom: 4px;
+    bottom: 6px;
     padding: 3px;
     margin-bottom: 0px;
     font-family: monospace;
@@ -141,6 +160,7 @@ body {
 
 .lm-copy-to-clipboard-button {
     border: 2px solid hsl(239, 10%, 80%);
+    background-color: background-color: hsl(239, 10%, 0%);
     border-radius: 10px;
     position: absolute;
     right: 9px;
@@ -165,6 +185,19 @@ body {
     top: 0px;
     bottom: 0px;
     background-color: transparent;
+    padding: 10px;
+}
+
+#draginto.lm-drag-over:after {
+    content: "";
+    display: inline-block;
+    outline: 3px solid hsl(239, 10%, 70%);
+    width: 393px;
+    height: 100px;
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
 }
 
 #first-visual {
@@ -175,6 +208,7 @@ body {
     right: 0px;
     top: 0px;
     bottom: 0px;
+    padding: 10px;
 }
 
 svg.icon {
