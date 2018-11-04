@@ -4,7 +4,7 @@
 
 <div id="first-visual">
     <div id="instructions" class="lm-ghost-file-block lm-file-block-size">
-        Got a file to share?  Drag-and-drop it here for a download link.
+        Got a file to share?  Drag-and-drop it here for a link.
         <svg class="lm-file-arrow-img" viewBox="0 0 12 12">
           <path
                 d="
@@ -212,7 +212,7 @@ DragExt.init("lm-draggable", "lm-drag-receive",
                         function(filename, result)
                         {
                             var info = JSON.parse(result);
-                            var fullUrl = "https://sha-da.com/files/" + info.hashcode;
+                            var fullUrl = "https://sha-da.com/view/" + info.hashcode;
 
                             $("#first-visual").remove();
 
