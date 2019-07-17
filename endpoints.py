@@ -76,5 +76,10 @@ def r_view(hashcode):
         return response
     return abort(404)
 
-
+@app.route('/size/<path:hashcode>', methods=['GET'])
+def r_size(hashcode):
+    filename, content = impl.get_file(hashcode)
+    if filename != None:
+        return str(len(content))
+    return abort(404)
 
