@@ -47,6 +47,10 @@ def upload_file():
         return json.dumps(impl.new_file(filename, f.stream.read()))
     return "{}"
 
+@app.route('/upload-data', methods=['POST'])
+def upload_data():
+    return json.dumps(impl.new_file("data", request.get_data()))
+
 @app.route('/upload-files', methods=['POST'])
 def upload_files():
     request.get_data()
