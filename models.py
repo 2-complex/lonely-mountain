@@ -16,7 +16,7 @@ class File(database.Model):
     content = Column(LargeBinary)
 
     def __init__(self, filename, content):
-        self.hashcode = base64.b64encode(hashlib.sha512(content).digest())
+        self.hashcode = base64.urlsafe_b64encode(hashlib.sha512(content).digest())
         self.filename = filename
         self.timestamp = datetime.datetime.utcnow()
         self.content = content
