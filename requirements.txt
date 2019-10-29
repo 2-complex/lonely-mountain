@@ -20,7 +20,7 @@ MarkupSafe==1.0
 PyYAML==3.10
 SQLAlchemy==0.8.0b2
 WTForms==1.0.3
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 alembic==0.9.9
 blinker==1.4
 click==6.7
