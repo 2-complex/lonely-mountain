@@ -30,8 +30,9 @@ def r_index():
 
 @app.route('/upload-base64', methods=['POST'])
 def upload_base64():
-    filename = request.form['filename']
-    content = base64.b64decode(re.findall("base64,(.*)", request.form['content'])[0])
+    blob = request.json or request.form
+    filename = blob['filename']
+    content = base64.b64decode(re.findall("base64,(.*)", blob['content'])[0])
     return json.dumps(impl.new_file(filename, content))
 
 @app.route('/upload-text', methods=['POST'])
