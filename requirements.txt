@@ -17,7 +17,7 @@ Jinja2==2.10
 Mako==1.0.7
 Markdown==2.2.1
 MarkupSafe==1.0
-PyYAML==3.10
+PyYAML==5.4
 SQLAlchemy==0.8.0b2
 WTForms==1.0.3
 Werkzeug==0.14.1
